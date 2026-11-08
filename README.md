@@ -27,7 +27,7 @@ The app's interface is in Turkish. English names are in brackets.
 
 ## First steps (no experience needed)
 
-1. Start the app and click **Kayıt Ol** (Register). Enter a user name, your name and a password, then press **KAYIT OL**. E-mail is optional.
+1. Start the app and open the register form from the login screen. Enter a user name, your name and a password, then press **KAYIT OL**. E-mail is optional.
 2. Log in with the same user name and password. You land on the main screen, which is empty at first.
 3. Click **Hobi Ekle** (Add hobby). Type a name, pick a category and a difficulty, then press **KAYDET** (Save). Your hobby appears in the list.
 4. Click **İlerleme Ekle** (Add progress) after you practise: choose the hobby, enter the minutes spent and a 1-5 rating.
