@@ -1,6 +1,6 @@
 # HobiTakip — Hobby Tracker
 
-A Windows desktop app for organizing hobbies, setting goals and tracking progress over time. Built with **C# (.NET 9, Windows Forms)** and a local **SQLite** database.
+A Windows desktop app for keeping track of hobbies, the goals you set for them and the time you actually spend. Everything is stored in a local SQLite file, so it works without internet and without an account on any server.
 
 ## Features
 - **Accounts:** register and log in, each user has their own data (passwords are hashed)
@@ -35,8 +35,17 @@ The app's interface is in Turkish. English names are in brackets.
 6. Click **Pomodoro**, choose a hobby and start the timer. When a session ends, the time is added to that hobby.
 7. Click **Başarılar** (Achievements) to see your badges; they unlock automatically. **Grafikler** (Charts) shows your statistics. **Ayarlar** (Settings) changes the theme.
 
-## Tech stack
-C# · .NET 9 · Windows Forms · SQLite (`Microsoft.Data.Sqlite`) · WinForms DataVisualization charts · Visual Studio installer project
+## Technology and infrastructure
+
+| Part | What it uses | Notes |
+|---|---|---|
+| Language | C# on .NET 9 | The project targets `net9.0-windows`. |
+| Interface | Windows Forms | Windows only. |
+| Database | SQLite | A single local file, created the first time you start the app. The packages are `Microsoft.Data.Sqlite` 8.0.0 and `System.Data.SQLite.Core` 1.0.118. |
+| Charts | `System.Windows.Forms.DataVisualization` | A prerelease package (1.0.0-prerelease.20110.1). See Troubleshooting if the Charts screen fails. |
+| Passwords | SHA-256 with a fixed salt | Fine for learning, not for production. See Known limitations. |
+| Installer | Visual Studio installer project | In the `HobiTakipSetup` folder. |
+| Server | None | No network calls, no cloud. |
 
 ## Run it
 1. Install Visual Studio with the **.NET desktop development** workload and the .NET 9 SDK.
