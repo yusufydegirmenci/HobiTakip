@@ -35,8 +35,19 @@ The app's interface is in Turkish. English names are in brackets.
 6. Click **Pomodoro**, choose a hobby and start the timer. When a session ends, the time is added to that hobby.
 7. Click **Başarılar** (Achievements) to see your badges; they unlock automatically. **Grafikler** (Charts) shows your statistics. **Ayarlar** (Settings) changes the theme.
 
-## Tech stack
-C# · .NET 9 · Windows Forms · SQLite (`Microsoft.Data.Sqlite`) · WinForms DataVisualization charts · Visual Studio installer project
+## Technology and architecture
+
+| Area | What is used | How |
+|---|---|---|
+| Language and runtime | **C#** on **.NET 9** (`net9.0-windows`) | A desktop app for Windows 10/11. |
+| UI | **Windows Forms** | Forms for hobbies, goals, progress, charts, achievements, Pomodoro and settings. `ThemeManager` applies light, dark and system themes. |
+| Database | **SQLite**, one local file `hobitakip.db` in the user's `LocalApplicationData` folder | Created automatically on first launch. Tables: `Users`, `Hobbies`, `Goals`, `Progress`, `Achievements`, `UserAchievements`, `UserSettings`. Accessed with `Microsoft.Data.Sqlite` (`System.Data.SQLite.Core` is also referenced). |
+| Charts | `System.Windows.Forms.DataVisualization` | Time distribution, monthly trend, weekly activity, ratings, goal completion. |
+| Export and notifications | `DataExporter`, `NotificationManager` | Data export and in-app notification windows. |
+| Passwords | SHA-256 with a fixed salt | Fine for a learning project; see Known limitations. |
+| Packaging | Visual Studio installer project (`HobiTakipSetup`) | Builds a Windows installer. |
+
+Everything runs on the user's machine: there is no server and no network access, and each user's data stays in their own local SQLite file.
 
 ## Run it
 1. Install Visual Studio with the **.NET desktop development** workload and the .NET 9 SDK.
